@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <a href="Form.html"></a>
+  <a href="Clients.html"></a>
+  <a href="Calculator.html"></a>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+    header {
+      background-color: #004aad;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .search-container {
+      display: flex;
+      align-items: center;
+    }
+    .search-container input {
+      padding: 0.5rem;
+      border-radius: 4px;
+      border: none;
+      margin-left: 1rem;
+      width: 200px;
+    }
+    .dashboard {
+      display: flex;
+      padding: 2rem;
+      gap: 2rem;
+    }
+    .table-section {
+      flex: 3;
+      background-color: white;
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .charts-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .chart-box {
+      background-color: white;
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .chart-box img {
+      width: 100%;
+      border-radius: 6px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      padding: 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+    .id-badge {
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+    .green { background-color: #e0f7e9; color: #2e7d32; }
+    .red { background-color: #fbe9e7; color: #c62828; }
+    .status-tag {
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      color: white;
+    }
+    .AS { background-color: #4caf50; }
+    .AL { background-color: #ffc107; }
+    .ID { background-color: #2196f3; }
+  </style>
+</head>
+<body>
+  <header>
+    <div><strong>LC Lending Business</strong></div>
+    <div class="search-container">
+      <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="form.html">Form</a>
+        <a href="clients.html">Clients</a>
+        <a href="calculator.html">Calculator</a>
+      </nav>
+      <input type="text" placeholder="Search">
+    </div>
+  </header>
+
+  <div class="dashboard">
+    <div class="table-section">
+      <h3>Borrowers</h3>
+      <table>
+        <thead>
+          <tr><th>Name</th><th>ID Number</th><th>Phone</th><th>Email</th><th>Updated</th><th>Status</th><th>Loan Amount</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Saylor Brooks</td><td><span class="id-badge green">86-23-969</span></td><td>(307) 555-9322</td><td>Brooks@gmail.com</td><td>Feb 6, 2024</td><td><span class="status-tag AS">AS</span></td><td>$42,000</td></tr>
+          <tr><td>Kallista Bolton</td><td><span class="id-badge green">86-22-003</span></td><td>(404) 538-9672</td><td>Boltonwonders@gmail.com</td><td>Feb 6, 2024</td><td><span class="status-tag AS">AS</span></td><td>$24,000</td></tr>
+          <tr><td>Winston Schultz</td><td><span class="id-badge green">67-12-475</span></td><td>(307) 555-0133</td><td>Schultzindustries@gmail.com</td><td>Feb 5, 2024</td><td><span class="status-tag AL">AL</span></td><td>$13,000</td></tr>
+          <tr><td>Elsie Hale</td><td><span class="id-badge green">58-23-083</span></td><td>(518) 533-5872</td><td>Hale@gmail.com</td><td>Feb 2, 2024</td><td><span class="status-tag AS">AS</span></td><td>$9,000</td></tr>
+          <tr><td>Brandon Welch</td><td><span class="id-badge green">63-84-753</span></td><td>(843) 735-0968</td><td>BWelch@fintech.io</td><td>Jan 23, 2024</td><td><span class="status-tag AS">AS</span></td><td>$5,000</td></tr>
+          <tr><td>Stephanie Walecek</td><td><span class="id-badge green">62-62-784</span></td><td>(307) 963-4754</td><td>referatpage@gmail.com</td><td>Feb 6, 2024</td><td><span class="status-tag AS">AS</span></td><td>$3,000</td></tr>
+          <tr><td>Jennifer Nixon</td><td><span class="id-badge red">82-23-089</span></td><td>(307) 498-9573</td><td>giggleagenda@mail.ru</td><td>Feb 6, 2024</td><td><span class="status-tag AL">AL</span></td><td>$1,400</td></tr>
+          <tr><td>Nadim Farhat</td><td><span class="id-badge green">67-02-054</span></td><td>(208) 048-0403</td><td>farhatfarhat@gmail.com</td><td>Feb 6, 2024</td><td><span class="status-tag AL">AL</span></td><td>$1,200</td></tr>
+          <tr><td>Walt Dulfoch</td><td><span class="id-badge green">65-33-776</span></td><td>(410) 555-0133</td><td>walt@fintech.io</td><td>Feb 2, 2024</td><td><span class="status-tag ID">ID</span></td><td>$8000</td></tr>
+          <tr><td>Tony Jota</td><td><span class="id-badge green">61-82-431</span></td><td>(307) 676-0593</td><td>jotatifa2024@gmail.com</td><td>Feb 2, 2024</td><td><span class="status-tag ID">ID</span></td><td>$8000</td></tr>
+          <tr><td>Patric Johnston</td><td><span class="id-badge green">61-20-431</span></td><td>(307) 733-9662</td><td>johnston007@gmail.com</td><td>Jan 29, 2024</td><td><span class="status-tag ID">ID</span></td><td>$8000</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="charts-section">
+      <div class="chart-box">
+        <h4>Overall Performance</h4>
+        <img src="pic2.PNG" alt="Overall Performance Chart">
+      </div>
+      <div class="chart-box">
+        <h4>Application Status</h4>
+        <img src="pic3.PNG" alt="Application Status Chart">
+      </div>
+    </div>
+  </div>
+</body>
+</html>

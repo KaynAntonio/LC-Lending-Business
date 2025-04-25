@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loan Landing Page</title>
+  <a href="dashboard.html"></a>
+  <a href="Form.html"></a>
+  <a href="Clients.html"></a>
+  <a href="Calculator.html"></a>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+    }
+    header {
+      background-color: #004aad;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav a {
+      color: white;
+      margin-left: 1.5rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .hero {
+      background: url('pic1.png') no-repeat center top;
+      background-size: cover;
+      height: 480px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .hero button {
+      background: #004aad;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      font-size: 1rem;
+      width: fit-content;
+    }
+    .loan-preview {
+      background-color: white;
+      margin: -60px auto 2rem;
+      padding: 2rem;
+      width: 90%;
+      max-width: 600px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .loan-preview input[type="range"] {
+      width: 100%;
+    }
+    .loan-preview label {
+      display: block;
+      margin: 1rem 0 0.3rem;
+      font-weight: bold;
+      text-align: left;
+    }
+    .loan-preview input[type="text"] {
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    .loan-preview button {
+      margin-top: 1rem;
+      background-color: #004aad;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      cursor: pointer;
+    }
+    .features {
+      background-color: #f0f0f0;
+      padding: 2rem 1rem;
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+    }
+    .features div {
+      flex: 1;
+      padding: 0 1rem;
+    }
+    .footer {
+      background-color: #004aad;
+      color: white;
+      text-align: center;
+      padding: 1.5rem 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div><strong>LC Lending Business</strong></div>
+    <nav>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="form.html">Add New Client</a>
+      <a href="clients.html">Clients</a>
+      <a href="calculator.html">Loan Calculator</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <p>Simple and Secure Process</p>
+    <h1>Connecting All Your Loans Needs</h1>
+    <h2 onclick="location.href='form.html'">Apply For Loan</h2>
+  </section>
+
+  <section class="loan-preview">
+    <h3>How much do you need?</h3>
+    <label for="amount">Amount:</label>
+    <!-- <input type="range" id="amount" min="1000" max="50000" value="20000">  -->
+
+    <label for="monthly">Pay Monthly:</label>
+    <input type="text" id="monthly" value="$2500">
+
+    <label for="term">Term of Use:</label>
+    <input type="text" id="term" value="8 Months">
+
+    <label for="total">Total Pay Back:</label>
+    <input type="text" id="total" value="$16480">
+
+    <button type="submit">Confirm</button>
+  </section>
+
+  <section class="features">
+    <div>
+      <h4>Very Low Rates on All Loans</h4>
+    </div>
+    <div>
+      <h4>95% Success Rate Guarantee</h4>
+    </div>
+    <div>
+      <h4>Flexible with Your Payment</h4>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>99% We Approve Loans | ₱30K Daily Payments | 314 Happy Customers | 21 Staff Members</p>
+  </footer>
+</body>
+</html>

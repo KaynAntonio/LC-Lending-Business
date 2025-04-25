@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loan Calculator</title>
+  <a href="dashboard.html"></a>
+  <a href="Form.html"></a>
+  <a href="Clients.html"></a>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+    header {
+      background-color: #0b4ea2;
+      padding: 15px 30px;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .nav-right input {
+      padding: 5px;
+    }
+
+    .logout-button {
+      background-color: #ff4d4d;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .logout-button:hover {
+      background-color: #e60000;
+    }
+
+    .banner {
+      background-color: #003f91;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      margin: 20px;
+      border-radius: 8px;
+    }
+
+    .calculator-container {
+      background: white;
+      max-width: 1000px;
+      margin: auto;
+      padding: 30px;
+      display: flex;
+      justify-content: space-between;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    .calculator-form, .calculator-results {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .calculator-form input, .calculator-form button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+
+    .calculator-form button {
+      background-color: #0056d2;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .calculator-results {
+      background: #f8f8f8;
+      border-left: 1px solid #ddd;
+      text-align: center;
+    }
+
+    .calculator-results h2 {
+      font-size: 32px;
+      color: #000;
+      margin-bottom: 10px;
+    }
+
+    .calculator-results p {
+      margin: 10px 0;
+      font-size: 18px;
+    }
+
+    .actions a {
+      display: inline-block;
+      margin: 10px;
+      color: #0056d2;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-left">
+      <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="form.html">Form</a>
+        <a href="clients.html">Clients</a>
+        <a href="#" style="text-decoration: underline;">Calculator</a>
+      </nav>
+    </div>
+    <div class="nav-right">
+      <input type="text" placeholder="Search" />
+      <a href="login.html" class="logout-button">Logout</a>
+    </div>
+  </header>
+
+  <div class="banner">
+    <h2>LC LENDING BUSINESS LOAN CALCULATOR</h2>
+    <p>Find out how much your monthly installments will cost!</p>
+  </div>
+
+  <div class="calculator-container">
+    <div class="calculator-form">
+      <label>Loan amount</label>
+      <input type="number" id="loanAmount" value="5000">
+
+      <label>Loan term in years</label>
+      <input type="number" id="loanYears" value="5">
+
+      <label>Or Loan term in months</label>
+      <input type="number" id="loanMonths" value="60">
+
+      <label>Interest rate per year</label>
+      <input type="number" id="interestRate" value="6.5">
+
+      <button onclick="calculateLoan()">Calculate</button>
+    </div>
+    <div class="calculator-results">
+      <p>Monthly payments</p>
+      <h2 id="monthlyPayment">$0.00</h2>
+      <p>Total principal paid: <span id="totalPrincipal">$0.00</span></p>
+      <p>Total interest paid: <span id="totalInterest">$0.00</span></p>
+      <div class="actions">
+        <a href="#">Compare loan rates</a>
+        <a href="#">Show amortization schedule</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function calculateLoan() {
+      const amount = parseFloat(document.getElementById("loanAmount").value);
+      const years = parseInt(document.getElementById("loanYears").value);
+      const monthsInput = parseInt(document.getElementById("loanMonths").value);
+      const interest = parseFloat(document.getElementById("interestRate").value);
+
+      const months = years * 12 || monthsInput;
+      const monthlyRate = interest / 100 / 12;
+
+      const monthlyPayment = (amount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -months));
+      const totalPaid = monthlyPayment * months;
+      const interestPaid = totalPaid - amount;
+
+      document.getElementById("monthlyPayment").innerText = `$${monthlyPayment.toFixed(2)}`;
+      document.getElementById("totalPrincipal").innerText = `$${amount.toFixed(2)}`;
+      document.getElementById("totalInterest").innerText = `$${interestPaid.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>

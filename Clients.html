@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Dashboard</title>
+  <a href="dashboard.html"></a>
+  <a href="Form.html"></a>
+  <a href="Calculator.html"></a>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+    }
+    header {
+      background-color: #0b4ea2;
+      color: white;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .container {
+      display: flex;
+      margin: 20px;
+    }
+    .borrower-list, .client-detail {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 20px;
+    }
+    .borrower-list {
+      flex: 1;
+      margin-right: 20px;
+    }
+    .client-detail {
+      flex: 1;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+    .search-box {
+      margin-bottom: 10px;
+    }
+    .id-green {
+      color: green;
+      font-weight: bold;
+    }
+    .id-red {
+      color: red;
+    }
+    .profile-section h3 {
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 5px;
+    }
+    .label {
+      font-weight: bold;
+      margin-right: 5px;
+    }
+    .value {
+      margin-bottom: 8px;
+    }
+    .approved {
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="form.html">Form</a>
+        <a href="#" style="text-decoration: underline">Clients</a>
+        <a href="calculator.html">Calculator</a>
+      </nav>
+    </div>
+    <div>
+      <input type="text" placeholder="Search" />
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="borrower-list">
+      <h3>Borrowers</h3>
+      <div class="search-box">
+        <input type="text" placeholder="Search by Borrower Name or ID" />
+      </div>
+      <table>
+        <tr><th>Name</th><th>ID Number</th><th>Phone</th><th>Email</th></tr>
+        <tr><td>Saylor Brooks</td><td class="id-green">89-23-969</td><td>(307) 555-9322</td><td>Brooks@gmail.com</td></tr>
+        <tr><td>Kallista Bolton</td><td class="id-green">68-22-003</td><td>(404) 538-9672</td><td>Boltonwonderers@gmail.com</td></tr>
+        <tr><td>Winston Schultz</td><td class="id-green">88-12-475</td><td>(307) 555-0133</td><td>Schultzindustries@gmail.com</td></tr>
+        <tr><td>Elsie Hale</td><td class="id-green">68-23-683</td><td>(518) 583-5872</td><td>Hale@gmail.com</td></tr>
+        <tr><td>Brandon Welch</td><td class="id-green">63-84-753</td><td>(843) 753-0968</td><td>BWelch@fintech.io</td></tr>
+        <tr><td>Stephanie Waldeck</td><td class="id-green">62-52-784</td><td>(307) 963-4754</td><td>referetapage@gmail.com</td></tr>
+        <tr><td>Jennifer Nixon</td><td class="id-red">62-23-689</td><td>(307) 498-9573</td><td>giggleslegenda@mail.ru</td></tr>
+        <tr><td>Nadim Farhat</td><td class="id-green">67-02-054</td><td>(208) 048-0403</td><td>farhatfarhat@gmail.com</td></tr>
+        <tr><td>Walt Duflock</td><td class="id-green">65-33-876</td><td>(410) 555-0133</td><td>walt@fintech.io</td></tr>
+        <tr><td>Tony Jota</td><td class="id-green">61-28-431</td><td>(307) 676-0593</td><td>jotafifa2024@gmail.com</td></tr>
+        <tr><td>Patric Johnston</td><td class="id-green">61-28-431</td><td>(307) 733-9562</td><td>johnston007@gmail.com</td></tr>
+      </table>
+    </div>
+    <div class="client-detail">
+      <h2>Stephanie Waldeck <span style="color:green">📞 62-752-764</span></h2>
+      <p>ID: <strong>63-62-784</strong> | Last Updated: Feb 5, 2024 – 5:34 PM</p>
+      <div class="profile-section">
+        <h3>Profile</h3>
+        <p><span class="label">Full Name:</span> Stephanie Waldeck</p>
+        <p><span class="label">Date of Birth:</span> March 12, 1990</p>
+        <p><span class="label">Address:</span> 248 Aspen Grove in, Jackson, WY 83001</p>
+        <p><span class="label">Employment Status:</span> Full-time</p>
+        <p><span class="label">Occupation:</span> Marketing Manager</p>
+        <p><span class="label">Employer:</span> Altura Creative Agency</p>
+        <p><span class="label">Annual Income:</span> $78,000</p>
+        <p><span class="label">Credit Score:</span> Grand Teton Federal Credit Union</p>
+      </div>
+      <div class="profile-section">
+        <h3>Loan Information</h3>
+        <p><span class="label">Loan Amount:</span> $25,000</p>
+        <p><span class="label">Loan Status:</span> <span class="approved">Approved</span></p>
+        <p><span class="label">Approval Date:</span> Jan 21, 2024</p>
+        <p><span class="label">Disbursement Date:</span> Jan 23, 2024</p>
+        <p><span class="label">Loan Term:</span> 48 months</p>
+        <p><span class="label">Monthly Payment:</span> $584.32</p>
+        <p><span class="label">Next Payment Due:</span> Feb 8, 2025</p>
+        <p><span class="label">Rate:</span> 75% APR</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
