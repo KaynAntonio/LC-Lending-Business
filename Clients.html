@@ -1,148 +1,480 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Client Dashboard</title>
-  <a href="dashboard.html"></a>
-  <a href="Form.html"></a>
-  <a href="Calculator.html"></a>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f5f5f5;
-    }
-    header {
-      background-color: #0b4ea2;
-      color: white;
-      padding: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    header nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .container {
-      display: flex;
-      margin: 20px;
-    }
-    .borrower-list, .client-detail {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      padding: 20px;
-    }
-    .borrower-list {
-      flex: 1;
-      margin-right: 20px;
-    }
-    .client-detail {
-      flex: 1;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    th, td {
-      padding: 10px;
-      border-bottom: 1px solid #ddd;
-      text-align: left;
-    }
-    .search-box {
-      margin-bottom: 10px;
-    }
-    .id-green {
-      color: green;
-      font-weight: bold;
-    }
-    .id-red {
-      color: red;
-    }
-    .profile-section h3 {
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 5px;
-    }
-    .label {
-      font-weight: bold;
-      margin-right: 5px;
-    }
-    .value {
-      margin-bottom: 8px;
-    }
-    .approved {
-      color: green;
-      font-weight: bold;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Client Dashboard</title>
+    <a href="dashboard.html"></a>
+    <a href="Form.html"></a>
+    <a href="Calculator.html"></a>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+        }
+        header {
+            background-color: #0b4ea2;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .container {
+            display: flex;
+            margin: 20px;
+        }
+        .borrower-list, .client-detail {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        .borrower-list {
+            flex: 1;
+            margin-right: 20px;
+        }
+        .client-detail {
+            flex: 0.8; /* Adjusted to be smaller, original was 1 */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+            cursor: pointer;
+        }
+        .search-box {
+            margin-bottom: 10px;
+        }
+        .id-green {
+            color: green;
+            font-weight: bold;
+        }
+        .id-red {
+            color: red;
+        }
+        .profile-section h3 {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+        .label {
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        .value {
+            margin-bottom: 8px;
+        }
+        .approved {
+            color: green;
+            font-weight: bold;
+        }
+        .borrower-search {
+            width: 400px;      /* Start with a width that can adapt */
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .search-button { /* Targeting the button */
+            padding: 6px 15px; /* Add padding */
+            border: none; /* Remove the default border */
+            border-radius: 5px; /* Round the corners */
+            background-color: #007bff; /* Set a background color */
+            color: white; /* Set the text color */
+            font-size: 16px; /* Adjust the text size */
+            cursor: pointer; /* Change the cursor on hover */
+        }
+        .search-button:hover { /* Style when the mouse hovers over the button */
+            background-color: #0056b3; /* Darken the background on hover */
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div>
-      <nav>
-        <a href="dashboard.html">Dashboard</a>
-        <a href="form.html">Form</a>
-        <a href="#" style="text-decoration: underline">Clients</a>
-        <a href="calculator.html">Calculator</a>
-      </nav>
-    </div>
-    <div>
-      <input type="text" placeholder="Search" />
-    </div>
-  </header>
+    <header>
+        <div>
+            <nav>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="form.html">Form</a>
+                <a href="#" style="text-decoration: underline">Clients</a>
+                <a href="calculator.html">Calculator</a>
+            </nav>
+        </div>
+        <div>
+            <input type="text" placeholder="Search" />
+        </div>
+    </header>
 
-  <div class="container">
-    <div class="borrower-list">
-      <h3>Borrowers</h3>
-      <div class="search-box">
-        <input type="text" placeholder="Search by Borrower Name or ID" />
-      </div>
-      <table>
-        <tr><th>Name</th><th>ID Number</th><th>Phone</th><th>Email</th></tr>
-        <tr><td>Saylor Brooks</td><td class="id-green">89-23-969</td><td>(307) 555-9322</td><td>Brooks@gmail.com</td></tr>
-        <tr><td>Kallista Bolton</td><td class="id-green">68-22-003</td><td>(404) 538-9672</td><td>Boltonwonderers@gmail.com</td></tr>
-        <tr><td>Winston Schultz</td><td class="id-green">88-12-475</td><td>(307) 555-0133</td><td>Schultzindustries@gmail.com</td></tr>
-        <tr><td>Elsie Hale</td><td class="id-green">68-23-683</td><td>(518) 583-5872</td><td>Hale@gmail.com</td></tr>
-        <tr><td>Brandon Welch</td><td class="id-green">63-84-753</td><td>(843) 753-0968</td><td>BWelch@fintech.io</td></tr>
-        <tr><td>Stephanie Waldeck</td><td class="id-green">62-52-784</td><td>(307) 963-4754</td><td>referetapage@gmail.com</td></tr>
-        <tr><td>Jennifer Nixon</td><td class="id-red">62-23-689</td><td>(307) 498-9573</td><td>giggleslegenda@mail.ru</td></tr>
-        <tr><td>Nadim Farhat</td><td class="id-green">67-02-054</td><td>(208) 048-0403</td><td>farhatfarhat@gmail.com</td></tr>
-        <tr><td>Walt Duflock</td><td class="id-green">65-33-876</td><td>(410) 555-0133</td><td>walt@fintech.io</td></tr>
-        <tr><td>Tony Jota</td><td class="id-green">61-28-431</td><td>(307) 676-0593</td><td>jotafifa2024@gmail.com</td></tr>
-        <tr><td>Patric Johnston</td><td class="id-green">61-28-431</td><td>(307) 733-9562</td><td>johnston007@gmail.com</td></tr>
-      </table>
+    <div class="container">
+        <div class="borrower-list">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <h2>Borrowers</h2>
+                <form action="/search_results" method="get">
+                    <input type="search" placeholder="Search by Borrower's Name" class="borrower-search" id="borrowerName" name="borrowerName">
+                  </form>
+                  <button type="submit" class="search-button">Search</button>
+            </div>
+            <table id="borrowerTable">
+                <thead>
+                    <tr><th>Name</th><th>ID Number</th><th>Phone</th><th>Email</th></tr>
+                </thead>
+                <tbody id="borrowerTableBody">
+                    <tr data-borrower-id="saylor"><td>Saylor Brooks</td><td class="id-green">89-23-969</td><td>(307) 555-9322</td><td>Brooks@gmail.com</td></tr>
+                    <tr data-borrower-id="kallista"><td>Kallista Bolton</td><td class="id-green">68-22-003</td><td>(404) 538-9672</td><td>Boltonwonderers@gmail.com</td></tr>
+                    <tr data-borrower-id="winston"><td>Winston Schultz</td><td class="id-green">88-12-475</td><td>(307) 555-0133</td><td>Schultzindustries@gmail.com</td></tr>
+                    <tr data-borrower-id="elsie"><td>Elsie Hale</td><td class="id-green">68-23-683</td><td>(518) 583-5872</td><td>Hale@gmail.com</td></tr>
+                    <tr data-borrower-id="brandon"><td>Brandon Welch</td><td class="id-green">63-84-753</td><td>(843) 753-0968</td><td>BWelch@fintech.io</td></tr>
+                    <tr data-borrower-id="stephanie"><td>Stephanie Waldeck</td><td class="id-green">62-52-784</td><td>(307) 963-4754</td><td>referetapage@gmail.com</td></tr>
+                    <tr data-borrower-id="jennifer"><td>Jennifer Nixon</td><td class="id-red">62-23-689</td><td>(307) 498-9573</td><td>giggleslegenda@mail.ru</td></tr>
+                    <tr data-borrower-id="nadim"><td>Nadim Farhat</td><td class="id-green">67-02-054</td><td>(208) 048-0403</td><td>farhatfarhat@gmail.com</td></tr>
+                    <tr data-borrower-id="walt"><td>Walt Duflock</td><td class="id-green">65-33-876</td><td>(410) 555-0133</td><td>walt@fintech.io</td></tr>
+                    <tr data-borrower-id="tony"><td>Tony Jota</td><td class="id-green">61-28-431</td><td>(307) 676-0593</td><td>jotafifa2024@gmail.com</td></tr>
+                    <tr data-borrower-id="patric"><td>Patric Johnston</td><td class="id-green">61-28-431</td><td>(307) 733-9562</td><td>johnston007@gmail.com</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="client-detail">
+            <h2 id="clientName">Stephanie Waldeck <span id="clientPhone" style="color:green">📞 62-752-764</span></h2>
+            <p>ID: <strong id="clientId">63-62-784</strong> | Last Updated: <span id="clientLastUpdated">Feb 5, 2024 – 5:34 PM</span></p>
+            <div class="profile-section">
+                <h3>Profile</h3>
+                <p><span class="label">Full Name:</span> <span id="fullName">Stephanie Waldeck</span></p>
+                <p><span class="label">Date of Birth:</span> <span id="dob">March 12, 1990</span></p>
+                <p><span class="label">Address:</span> <span id="address">248 Aspen Grove in, Jackson, WY 83001</span></p>
+                <p><span class="label">Employment Status:</span> <span id="employmentStatus">Full-time</span></p>
+                <p><span class="label">Occupation:</span> <span id="occupation">Marketing Manager</span></p>
+                <p><span class="label">Employer:</span> <span id="employer">Altura Creative Agency</span></p>
+                <p><span class="label">Annual Income:</span> <span id="annualIncome">$78,000</span></p>
+                <p><span class="label">Credit Score:</span> <span id="creditScore">Grand Teton Federal Credit Union</span></p>
+            </div>
+            <div class="profile-section">
+                <h3>Loan Information</h3>
+                <p><span class="label">Loan Amount:</span> <span id="loanAmount">$25,000</span></p>
+                <p><span class="label">Loan Status:</span> <span id="loanStatus" class="approved">Approved</span></p>
+                <p><span class="label">Approval Date:</span> <span id="approvalDate">Jan 21, 2024</span></p>
+                <p><span class="label">Disbursement Date:</span> <span id="disbursementDate">Jan 23, 2024</span></p>
+                <p><span class="label">Loan Term:</span> <span id="loanTerm">48 months</span></p>
+                <p><span class="label">Monthly Payment:</span> <span id="monthlyPayment">$584.32</span></p>
+                <p><span class="label">Next Payment Due:</span> <span id="nextPayment">Feb 8, 2025</span></p>
+                <p><span class="label">Rate:</span> <span id="rate">75% APR</span></p>
+            </div>
+        </div>
     </div>
-    <div class="client-detail">
-      <h2>Stephanie Waldeck <span style="color:green">📞 62-752-764</span></h2>
-      <p>ID: <strong>63-62-784</strong> | Last Updated: Feb 5, 2024 – 5:34 PM</p>
-      <div class="profile-section">
-        <h3>Profile</h3>
-        <p><span class="label">Full Name:</span> Stephanie Waldeck</p>
-        <p><span class="label">Date of Birth:</span> March 12, 1990</p>
-        <p><span class="label">Address:</span> 248 Aspen Grove in, Jackson, WY 83001</p>
-        <p><span class="label">Employment Status:</span> Full-time</p>
-        <p><span class="label">Occupation:</span> Marketing Manager</p>
-        <p><span class="label">Employer:</span> Altura Creative Agency</p>
-        <p><span class="label">Annual Income:</span> $78,000</p>
-        <p><span class="label">Credit Score:</span> Grand Teton Federal Credit Union</p>
-      </div>
-      <div class="profile-section">
-        <h3>Loan Information</h3>
-        <p><span class="label">Loan Amount:</span> $25,000</p>
-        <p><span class="label">Loan Status:</span> <span class="approved">Approved</span></p>
-        <p><span class="label">Approval Date:</span> Jan 21, 2024</p>
-        <p><span class="label">Disbursement Date:</span> Jan 23, 2024</p>
-        <p><span class="label">Loan Term:</span> 48 months</p>
-        <p><span class="label">Monthly Payment:</span> $584.32</p>
-        <p><span class="label">Next Payment Due:</span> Feb 8, 2025</p>
-        <p><span class="label">Rate:</span> 75% APR</p>
-      </div>
-    </div>
-  </div>
+
+    <script>
+        const borrowerTable = document.getElementById('borrowerTable');
+        const clientNameElement = document.getElementById('clientName');
+        const clientPhoneElement = document.getElementById('clientPhone');
+        const clientIdElement = document.getElementById('clientId');
+        const clientLastUpdatedElement = document.getElementById('clientLastUpdated');
+        const fullNameElement = document.getElementById('fullName');
+        const dobElement = document.getElementById('dob');
+        const addressElement = document.getElementById('address');
+        const employmentStatusElement = document.getElementById('employmentStatus');
+        const occupationElement = document.getElementById('occupation');
+        const employerElement = document.getElementById('employer');
+        const annualIncomeElement = document.getElementById('annualIncome');
+        const creditScoreElement = document.getElementById('creditScore');
+        const loanAmountElement = document.getElementById('loanAmount');
+        const loanStatusElement = document.getElementById('loanStatus');
+        const approvalDateElement = document.getElementById('approvalDate');
+        const disbursementDateElement = document.getElementById('disbursementDate');
+        const loanTermElement = document.getElementById('loanTerm');
+        const monthlyPaymentElement = document.getElementById('monthlyPayment');
+        const nextPaymentElement = document.getElementById('nextPayment');
+        const rateElement = document.getElementById('rate');
+
+        // Sample client data (replace with your actual data source)
+        const clientData = {
+            "saylor": {
+                name: "Saylor Brooks",
+                phone: "(307) 555-9322",
+                id: "89-23-969",
+                lastUpdated: "Feb 10, 2025 – 10:15 AM",
+                fullName: "Saylor Brooks",
+                dob: "June 5, 1987",
+                address: "123 Main St, Anytown, USA",
+                employmentStatus: "Employed",
+                occupation: "Accountant",
+                employer: "ABC Corp",
+                annualIncome: "$60,000",
+                creditScore: "Excellent",
+                loanAmount: "$15,000",
+                loanStatus: "Approved",
+                approvalDate: "Jan 15, 2025",
+                disbursementDate: "Jan 20, 2025",
+                loanTerm: "36 months",
+                monthlyPayment: "$450.50",
+                nextPayment: "May 10, 2025",
+                rate: "6.5% APR"
+            },
+            "kallista": {
+                name: "Kallista Bolton",
+                phone: "(404) 538-9672",
+                id: "68-22-003",
+                lastUpdated: "Mar 1, 2025 – 2:00 PM",
+                fullName: "Kallista Bolton",
+                dob: "November 20, 1993",
+                address: "456 Elm St, Somecity, USA",
+                employmentStatus: "Self-employed",
+                occupation: "Web Designer",
+                employer: "Freelance",
+                annualIncome: "$75,000",
+                creditScore: "Good",
+                loanAmount: "$20,000",
+                loanStatus: "Pending",
+                approvalDate: "N/A",
+                disbursementDate: "N/A",
+                loanTerm: "48 months",
+                monthlyPayment: "$500.00",
+                nextPayment: "N/A",
+                rate: "7.0% APR"
+            },
+            "winston": {
+                name: "Winston Schultz",
+                phone: "(307) 555-0133",
+                id: "88-12-475",
+                lastUpdated: "Apr 20, 2025 – 11:30 AM",
+                fullName: "Winston Schultz",
+                dob: "July 10, 1989",
+                address: "789 Oak Ave, Othertown, USA",
+                employmentStatus: "Employed",
+                occupation: "Engineer",
+                employer: "XYZ Industries",
+                annualIncome: "$90,000",
+                creditScore: "Excellent",
+                loanAmount: "$30,000",
+                loanStatus: "Approved",
+                approvalDate: "Mar 15, 2025",
+                disbursementDate: "Mar 22, 2025",
+                loanTerm: "60 months",
+                monthlyPayment: "$560.75",
+                nextPayment: "June 20, 2025",
+                rate: "6.0% APR"
+            },
+            "elsie": {
+                name: "Elsie Hale",
+                phone: "(518) 583-5872",
+                id: "68-23-683",
+                lastUpdated: "Jan 5, 2025 – 4:45 PM",
+                fullName: "Elsie Hale",
+                dob: "September 18, 1991",
+                address: "101 Pine Ln, Anytown, USA",
+                employmentStatus: "Part-time",
+                occupation: "Teacher Assistant",
+                employer: "Local School District",
+                annualIncome: "$35,000",
+                creditScore: "Fair",
+                loanAmount: "$5,000",
+                loanStatus: "Rejected",
+                approvalDate: "Dec 20, 2024",
+                disbursementDate: "N/A",
+                loanTerm: "24 months",
+                monthlyPayment: "$220.20",
+                nextPayment: "N/A",
+                rate: "8.5% APR"
+            },
+            "brandon": {
+                name: "Brandon Welch",
+                phone: "(843) 753-0968",
+                id: "63-84-753",
+                lastUpdated: "Apr 1, 2025 – 9:00 AM",
+                fullName: "Brandon Welch",
+                dob: "December 2, 1986",
+                address: "222 Oak St, Somecity, USA",
+                employmentStatus: "Employed",
+                occupation: "Sales Manager",
+                employer: "Global Sales Inc.",
+                annualIncome: "$85,000",
+                creditScore: "Very Good",
+                loanAmount: "$22,000",
+                loanStatus: "Approved",
+                approvalDate: "Mar 5, 2025",
+                disbursementDate: "Mar 10, 2025",
+                loanTerm: "48 months",
+                monthlyPayment: "$515.90",
+                nextPayment: "May 5, 2025",
+                rate: "6.2% APR"
+            },
+            "stephanie": {
+                name: "Stephanie Waldeck",
+                phone: "(307) 963-4754",
+                id: "62-52-784",
+                lastUpdated: "Feb 5, 2024 – 5:34 PM",
+                fullName: "Stephanie Waldeck",
+                dob: "March 12, 1990",
+                address: "248 Aspen Grove in, Jackson, WY 83001",
+                employmentStatus: "Full-time",
+                occupation: "Marketing Manager",
+                employer: "Altura Creative Agency",
+                annualIncome: "$78,000",
+                creditScore: "Grand Teton Federal Credit Union",
+                loanAmount: "$25,000",
+                loanStatus: "Approved",
+                approvalDate: "Jan 21, 2024",
+                disbursementDate: "Jan 23, 2024",
+                loanTerm: "48 months",
+                monthlyPayment: "$584.32",
+                nextPayment: "Feb 8, 2025",
+                rate: "75% APR"
+            },
+            "jennifer": {
+                name: "Jennifer Nixon",
+                phone: "(307) 498-9573",
+                id: "62-23-689",
+                lastUpdated: "Oct 28, 2024 – 10:22 AM",
+                fullName: "Jennifer Nixon",
+                dob: "October 1, 1988",
+                address: "999 Pine Ave, Anytown, USA",
+                employmentStatus: "Unemployed",
+                occupation: "N/A",
+                employer: "N/A",
+                annualIncome: "$0",
+                creditScore: "Poor",
+                loanAmount: "$10,000",
+                loanStatus: "Denied",
+                approvalDate: "Oct 25, 2024",
+                disbursementDate: "N/A",
+                loanTerm: "24 months",
+                monthlyPayment: "$450.00",
+                nextPayment: "N/A",
+                rate: "9.0% APR"
+            },
+             "nadim": {
+                name: "Nadim Farhat",
+                phone: "(208) 048-0403",
+                id: "67-02-054",
+                lastUpdated: "Jul 19, 2024 – 6:03 PM",
+                fullName: "Nadim Farhat",
+                dob: "May 7, 1995",
+                address: "111 River Rd, Somecity, USA",
+                employmentStatus: "Employed",
+                occupation: "Software Developer",
+                employer: "Code Crafters Inc.",
+                annualIncome: "$80,000",
+                creditScore: "Good",
+                loanAmount: "$18,000",
+                loanStatus: "Approved",
+                approvalDate: "Jul 10, 2024",
+                disbursementDate: "Jul 17, 2024",
+                loanTerm: "42 months",
+                monthlyPayment: "$480.25",
+                nextPayment: "Sep 17, 2024",
+                rate: "6.75% APR"
+            },
+            "walt":  {
+                name: "Walt Duflock",
+                phone: "(410) 555-0133",
+                id: "65-33-876",
+                lastUpdated: "Dec 22, 2024 – 3:40 PM",
+                fullName: "Walt Duflock",
+                dob: "August 29, 1982",
+                address: "555 Tech Park Dr, Anytown, USA",
+                employmentStatus: "Employed",
+                occupation: "Chief Technology Officer",
+                employer: "Fintech Solutions",
+                annualIncome: "$150,000",
+                creditScore: "Exceptional",
+                loanAmount: "$40,000",
+                loanStatus: "Approved",
+                approvalDate: "Dec 1, 2024",
+                disbursementDate: "Dec 8, 2024",
+                loanTerm: "60 months",
+                monthlyPayment: "$775.50",
+                nextPayment: "Feb 8, 2025",
+                rate: "5.5% APR"
+            },
+            "tony": {
+                name: "Tony Jota",
+                phone: "(307) 676-0593",
+                id: "61-28-431",
+                lastUpdated: "Mar 8, 2025 – 1:20 PM",
+                fullName: "Tony Jota",
+                dob: "January 3, 1997",
+                address: "888 Game St, Somecity, USA",
+                employmentStatus: "Self-Employed",
+                occupation: "Professional Gamer",
+                employer: "Self",
+                annualIncome: "$100,000",
+                creditScore: "Good",
+                loanAmount: "$12,000",
+                loanStatus: "Approved",
+                approvalDate: "Feb 15, 2025",
+                disbursementDate: "Feb 22, 2025",
+                loanTerm: "24 months",
+                monthlyPayment: "$540.00",
+                nextPayment: "Apr 22, 2025",
+                rate: "7.25% APR"
+            },
+            "patric": {
+                name: "Patric Johnston",
+                phone: "(307) 733-9562",
+                id: "61-28-431",
+                lastUpdated: "Nov 14, 2024 – 8:00 AM",
+                fullName: "Patric Johnston",
+                dob: "July 22, 1992",
+                address: "444 Lodge Rd, Anytown, USA",
+                employmentStatus: "Employed",
+                occupation: "Park Ranger",
+                employer: "National Park Service",
+                annualIncome: "$55,000",
+                creditScore: "Fair",
+                loanAmount: "$8,000",
+                loanStatus: "Approved",
+                approvalDate: "Nov 1, 2024",
+                disbursementDate: "Nov 8, 2024",
+                loanTerm: "30 months",
+                monthlyPayment: "$290.50",
+                nextPayment: "Jan 8, 2025",
+                rate: "8.0% APR"
+            }
+        };
+
+        borrowerTable.addEventListener('click', (event) => {
+            const clickedRow = event.target.closest('tr');
+            if (!clickedRow) return;
+
+            const borrowerId = clickedRow.dataset.borrowerId;
+            const data = clientData[borrowerId];
+
+            if (data) {
+                updateClientDetails(data);
+            }
+        });
+
+        function updateClientDetails(data) {
+            clientNameElement.textContent = data.name;
+            clientPhoneElement.textContent = `📞 ${data.phone}`;
+            clientIdElement.textContent = data.id;
+            clientLastUpdatedElement.textContent =  data.lastUpdated;
+            fullNameElement.textContent = data.fullName;
+            dobElement.textContent = data.dob;
+            addressElement.textContent = data.address;
+            employmentStatusElement.textContent = data.employmentStatus;
+            occupationElement.textContent = data.occupation;
+            employerElement.textContent = data.employer;
+            annualIncomeElement.textContent = data.annualIncome;
+            creditScoreElement.textContent = data.creditScore;
+            loanAmountElement.textContent = data.loanAmount;
+            loanStatusElement.textContent = data.loanStatus;
+            approvalDateElement.textContent = data.approvalDate;
+            disbursementDateElement.textContent = data.disbursementDate;
+            loanTermElement.textContent = data.loanTerm;
+            monthlyPaymentElement.textContent = data.monthlyPayment;
+            nextPaymentElement.textContent = data.nextPayment;
+            rateElement.textContent = data.rate;
+        }
+        
+    </script>
 </body>
 </html>
