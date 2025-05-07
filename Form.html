@@ -114,14 +114,15 @@
       font-weight: bold;
     }
 
-    .loan-section input[type="text"] {
-      width: 100%;
-      padding: 1rem;
-      background-color: #dfe4ed;
-      border: none;
-      border-radius: 5px;
-      font-size: 1rem;
-    }
+    .loan-section input[type="number"] {
+  width: 100%;
+  padding: 1rem;
+  background-color: #dfe4ed;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
 
     .loan-info {
       margin: 1.5rem 0;
@@ -194,9 +195,9 @@
       <h3>LOAN AMOUNT</h3>
       <div>
         <label for="amount">Amount</label>
-        <input id="amount" type="number" placeholder="e.g. 10000" required />
+        <input id="amount" type="number" placeholder="" required />
         <label for="duration">Duration (Months)</label>
-        <input id="duration" type="number" placeholder="e.g. 8" required />
+        <input id="duration" type="number" placeholder="" required />
       </div>
       <div class="loan-info">
         <div><span>Pay Monthly</span><strong id="monthlyPayment">₱0</strong></div>
@@ -254,4 +255,3 @@
   </script>
 </body>
 </html>
-
